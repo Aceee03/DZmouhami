@@ -1,75 +1,21 @@
 import headerImage from '../../../../Projet GL/Design/HD Law Wallpapers Top Free HD Law Backgrounds.jpg';
 import familyImage from '../../../../Projet GL/Design/maxresdefault.jpg';
 import teamImage from '../../../../Projet GL/Design/teamImage.jpg';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import lawsContent from './shared/lawsContent.jsx';
 import Slider from '../components/shared/Slider.jsx'
 import { FaStar } from 'react-icons/fa'
 
 
 const HomePage = () => {
     const [activeLaw, setActiveLaw] = useState('family');
-    const lawsContent = {
-        family: (<div className='flex flex-row gap-8 md:gap-0 mx-6 md:mx-64 md:mt-4 justify-between'>
-            {/* Text */}
-            <p className='md:text-lg text-sm md:px-24'>
-                <span className='font-bold text-lg'>Compassionate family law solutions</span>
-                <br />
-                Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit.
-                Vel, sint fuga eum dolorum accusantium molestiae ratione
-                minima provident ipsum fugiat excepturi atque ea aut incidunt
-                nemo accusamus hic tempore placeat?
-            </p>
-            {/* pic */}
-            <img className='shadow-[#800020] shadow-md h-48 w-48 object-cover'
-                src={familyImage}></img>
-        </div>),
-        tax: (<div className='flex flex-row gap-8 md:gap-0 mx-6 md:mx-64 md:mt-4 justify-between'>
-            {/* Text */}
-            <p className='md:text-lg text-sm md:px-24'>
-                <span className='font-bold text-lg'>Compassionate family law solutions</span>
-                <br />
-                Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit.
-                Vel, sint fuga eum dolorum accusantium molestiae ratione
-                minima provident ipsum fugiat excepturi atque ea aut incidunt
-                nemo accusamus hic tempore placeat?
-            </p>
-            {/* pic */}
-            <img className='shadow-[#800020] shadow-md h-48 w-48 object-cover'
-                src="https://helmersomerslaw.com/wp-content/uploads/2018/12/Tax-Law-Northern-Kentucky-Florence-Tax-Attorney.jpg"></img>
-        </div>),
-        criminal: (<div className='flex flex-row gap-8 md:gap-0 mx-6 md:mx-64 md:mt-4 justify-between'>
-            {/* Text */}
-            <p className='md:text-lg text-sm md:px-24'>
-                <span className='font-bold text-lg'>Compassionate family law solutions</span>
-                <br />
-                Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit.
-                Vel, sint fuga eum dolorum accusantium molestiae ratione
-                minima provident ipsum fugiat excepturi atque ea aut incidunt
-                nemo accusamus hic tempore placeat?
-            </p>
-            {/* pic */}
-            <img className='shadow-[#800020] shadow-md h-48 w-48 object-cover'
-                src="https://fbalawfirm.com/wp-content/uploads/2021/06/criminal-home-banner-1024x683.jpg"></img>
-        </div >),
-        civil: (<div className='flex flex-row gap-8 md:gap-0 mx-6 md:mx-64 md:mt-4 justify-between'>
-            {/* Text */}
-            <p className='md:text-lg text-sm md:px-24'>
-                <span className='font-bold text-lg'>Compassionate family law solutions</span>
-                <br />
-                Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit.
-                Vel, sint fuga eum dolorum accusantium molestiae ratione
-                minima provident ipsum fugiat excepturi atque ea aut incidunt
-                nemo accusamus hic tempore placeat?
-            </p>
-            {/* pic */}
-            <img className='shadow-[#800020] shadow-md h-48 w-48 object-cover'
-                src="https://archive-2017-2022.indepthnews.info/images/civil-rights-movements-1963-march.jpg"></img>
-        </div>)
-    }
+
+    const navigate = useNavigate();
+
+    const redirectToFindLawyer = () => {
+        navigate('/lawyers');
+    };
 
     const activeButtonStyle = 'border-none text-[#800020] underline';
     const buttonStyle = 'border-none text-sm md:text-xl';
@@ -101,52 +47,59 @@ const HomePage = () => {
             <div className='flex flex-row m-8 md:mx-64 gap-8'>
                 {/* Legal issue bar */}
                 <select
-                    className="h-14 w-1/3 border-none p-2 shadow-lg">
+                    className="h-14 w-full border-none p-2 shadow-lg">
                     <option selected disabled value="">Legal issue</option>
-                    <option value="family">Family Law</option>
-                    <option value="tax">Tax Law</option>
-                    <option value="criminal">Criminal Law</option>
-                    <option value="civil">Civil and Political Rights</option>
+                    <option value="faillite">Avocat de la faillite</option>
+                    <option value="emploi">Avocat à l'emploi</option>
+                    <option value="famille">Avocat familial</option>
+                    <option value="general">Avocat généraliste</option>
+                    <option value="fiscal">Avocat fiscaliste</option>
+                    <option value="penal">Droit pénal</option>
+                    <option value="civil">Droit civil</option>
+                    <option value="affaires">Droit des affaires</option>
+                    <option value="civil">Droit civil</option>
+                    <option value="commercial">Droit commercial</option>
+                    <option value="administratif">Administratif</option>
                 </select>
 
                 {/* Location bar */}
-                <select placeholder="Location" className="h-14 w-1/3 border-none p-2 shadow-lg">
-                    <option selected disabled value="">Location</option>
+                <select placeholder="Wilaya" className="h-14 w-full border-none p-2 shadow-lg">
+                    <option selected disabled value="">Wilaya</option>
                     <option value="Adrar">Adrar</option>
                     <option value="Chlef">Chlef</option>
                     <option value="Laghouat">Laghouat</option>
                     <option value="Oum El Bouaghi">Oum El Bouaghi</option>
                     <option value="Batna">Batna</option>
-                    <option value="Béjaïa">Béjaïa</option>
+                    <option value="Bejaia">Béjaïa</option>
                     <option value="Biskra">Biskra</option>
-                    <option value="Béchar">Béchar</option>
+                    <option value="Bechar">Béchar</option>
                     <option value="Blida">Blida</option>
                     <option value="Bouira">Bouira</option>
                     <option value="Tamanrasset">Tamanrasset</option>
-                    <option value="Tébessa">Tébessa</option>
+                    <option value="Tebessa">Tébessa</option>
                     <option value="Tlemcen">Tlemcen</option>
                     <option value="Tiaret">Tiaret</option>
                     <option value="Tizi Ouzou">Tizi Ouzou</option>
                     <option value="Alger">Alger</option>
                     <option value="Djelfa">Djelfa</option>
                     <option value="Jijel">Jijel</option>
-                    <option value="Sétif">Sétif</option>
-                    <option value="Saïda">Saïda</option>
+                    <option value="Setif">Sétif</option>
+                    <option value="Saida">Saïda</option>
                     <option value="Skikda">Skikda</option>
-                    <option value="Sidi Bel Abbès">Sidi Bel Abbès</option>
+                    <option value="Sidi Bel Abbes">Sidi Bel Abbès</option>
                     <option value="Annaba">Annaba</option>
                     <option value="Guelma">Guelma</option>
                     <option value="Constantine">Constantine</option>
-                    <option value="Médéa">Médéa</option>
+                    <option value="Medea">Médéa</option>
                     <option value="Mostaganem">Mostaganem</option>
-                    <option value="M'Sila">M'Sila</option>
+                    <option value="Msila">M'Sila</option>
                     <option value="Mascara">Mascara</option>
                     <option value="Ouargla">Ouargla</option>
                     <option value="Oran">Oran</option>
                     <option value="El Bayadh">El Bayadh</option>
                     <option value="Illizi">Illizi</option>
-                    <option value="Bordj Bou Arréridj">Bordj Bou Arréridj</option>
-                    <option value="Boumerdès">Boumerdès</option>
+                    <option value="Bordj Bou Arreridj">Bordj Bou Arréridj</option>
+                    <option value="Boumerdes">Boumerdès</option>
                     <option value="El Tarf">El Tarf</option>
                     <option value="Tindouf">Tindouf</option>
                     <option value="Tissemsilt">Tissemsilt</option>
@@ -155,12 +108,12 @@ const HomePage = () => {
                     <option value="Souk Ahras">Souk Ahras</option>
                     <option value="Tipaza">Tipaza</option>
                     <option value="Mila">Mila</option>
-                    <option value="Aïn Defla">Aïn Defla</option>
-                    <option value="Naâma">Naâma</option>
-                    <option value="Aïn Témouchent">Aïn Témouchent</option>
-                    <option value="Ghardaïa">Ghardaïa</option>
+                    <option value="Ain Defla">Aïn Defla</option>
+                    <option value="Naama">Naâma</option>
+                    <option value="Ain Temouchent">Aïn Témouchent</option>
+                    <option value="Ghardaia">Ghardaïa</option>
                     <option value="Relizane">Relizane</option>
-                    <option value="El M'Ghair">El M'Ghair</option>
+                    <option value="El Mghair">El M'Ghair</option>
                     <option value="Ouled Djellal">Ouled Djellal</option>
                     <option value="Beni Abbes">Beni Abbes</option>
                     <option value="In Salah">In Salah</option>
@@ -168,8 +121,9 @@ const HomePage = () => {
                 </select>
 
 
+
                 {/* Find button */}
-                <button type="submit"
+                <button type="submit" onClick={redirectToFindLawyer}
                     className="h-14 w-1/3 border-none rounded-none bg-[#800020] text-white shadow-lg">Find 🔍</button>
             </div>
 
@@ -246,35 +200,6 @@ const HomePage = () => {
                     <Slider />
                 </div>
             </div>
-
-            {/* Footer */}
-            <footer class="shadow bg-black mt-8">
-                <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-                    <div class="sm:flex sm:items-center sm:justify-between">
-                        <a href="" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">DZ Mouhami</span>
-                        </a>
-                        <ul class="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 text-white">
-                            <li>
-                                <a href="#" class="hover:underline me-4 md:me-6">About</a>
-                            </li>
-                            <li>
-                                <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                            </li>
-                            <li>
-                                <a href="#" class="hover:underline">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr class="my-6 border-white sm:mx-auto lg:my-8" />
-                    <span class="block text-sm text-white sm:text-center">© 2023 <a href="" class="hover:underline">DZ Mouhami™</a>. All Rights Reserved.</span>
-                </div>
-            </footer>
-
 
         </div>
     );
