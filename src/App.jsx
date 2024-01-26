@@ -6,12 +6,12 @@ import Footer from './components/shared/Footer'
 import SignIn from './components/pages/SignIn'
 import ResetPassword from './components/pages/ResetPassword'
 import Lawyers from './components/pages/Lawyers'
-import { FeedbackProvider } from './context/ContextProvider'
+import { ContextProvider } from './context/ContextProvider'
 
 function App() {
 
   return (
-    <FeedbackProvider>
+    <ContextProvider>
       <Router>
         <div className="">
           <Navbar />
@@ -34,7 +34,7 @@ function App() {
           </div>
         </div>
       </Router>
-    </FeedbackProvider>
+    </ContextProvider>
   )
 }
 

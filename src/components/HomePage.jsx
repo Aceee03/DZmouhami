@@ -1,11 +1,9 @@
-import headerImage from '../../../../Projet GL/Design/HD Law Wallpapers Top Free HD Law Backgrounds.jpg';
-import familyImage from '../../../../Projet GL/Design/maxresdefault.jpg';
-import teamImage from '../../../../Projet GL/Design/teamImage.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import lawsContent from './shared/lawsContent.jsx';
 import Slider from '../components/shared/Slider.jsx'
 import { FaStar } from 'react-icons/fa'
+import Rating from './shared/Rating.jsx';
 
 
 const HomePage = () => {
@@ -39,7 +37,7 @@ const HomePage = () => {
                         <h1 className="px-4 text-sm md:text-lg font-extralight z-10">
                             Explore our services and meet our skilled attorneys. Let's navigate your legal journey together.</h1>
                     </div>
-                    <img className="md:h-[500px] w-full brightness-50 z-0 object-cover" src={headerImage} alt="" />
+                    <img className="md:h-[500px] w-full brightness-50 z-0 object-cover" src="https://cdn.wallpapersafari.com/66/97/zlEA1G.jpg" alt="" />
                 </div>
             </div>
 
@@ -188,7 +186,7 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                <img className="md:h-[500px] w-full brightness-50 z-0 object-cover" src={teamImage} alt="" />
+                <img className="md:h-[500px] w-full brightness-50 z-0 object-cover" src="https://wallpapers.com/images/hd/ongoing-lawyer-case-nwunvpke14ebvezp.jpg" alt="" />
             </div>
 
             {/* Our clients opinions */}
@@ -201,6 +199,12 @@ const HomePage = () => {
                 </div>
             </div>
 
+            {/* Feedback system */}
+            <div>
+                <div>
+                    <Rating />
+                </div>
+            </div>
         </div>
     );
 }

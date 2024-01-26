@@ -3,12 +3,14 @@ const LawyersList = [
     id: 1,
     name: 'Alice Martin',
     rating: 4,
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'faillite',
   },
   {
     id: 2,
     name: 'Bob Johnson',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 5,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'emploi',
@@ -16,6 +18,7 @@ const LawyersList = [
   {
     id: 3,
     name: 'Charlie Davis',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 3,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'famille',
@@ -23,6 +26,7 @@ const LawyersList = [
   {
     id: 4,
     name: 'David Smith',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 4,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'general',
@@ -30,6 +34,7 @@ const LawyersList = [
   {
     id: 5,
     name: 'Emma White',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 5,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'fiscal',
@@ -37,6 +42,7 @@ const LawyersList = [
   {
     id: 6,
     name: 'Frank Miller',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 4,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'penal',
@@ -44,6 +50,7 @@ const LawyersList = [
   {
     id: 7,
     name: 'Grace Wilson',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 3,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'civil',
@@ -51,6 +58,7 @@ const LawyersList = [
   {
     id: 8,
     name: 'Henry Jones',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 5,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'affaires',
@@ -58,6 +66,7 @@ const LawyersList = [
   {
     id: 9,
     name: 'Ivy Brown',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 4,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'civil',
@@ -65,6 +74,7 @@ const LawyersList = [
   {
     id: 10,
     name: 'Jack Taylor',
+    image: 'https://destinationcles.com/wp-content/uploads/2022/06/15-Lawyer-Tips-and-Tricks-to-Help-You-Succeed-in-Law-from-Destination-CLEs-at-DestinationCLEs.com_.jpg',
     rating: 3,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
     speciality: 'commercial',

@@ -147,7 +147,7 @@ const Lawyers = () => {
                         {LawyersList.map((lawyer) => (
                             <div class="items-center bg-gray-50 rounded-lg shadow sm:flex" key={lawyer.id}>
                                 <Link to={`/lawyers/${lawyer.id}`}>
-                                    <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Avatar" />
+                                    <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src={lawyer.image}/>
                                 </Link>
                                 <div class="p-5">
                                     <h3 class="text-xl font-bold tracking-tight text-gray-900">
