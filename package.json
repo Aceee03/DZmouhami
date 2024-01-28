@@ -10,7 +10,9 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "server": "json-server --watch ratings.json --port 5500",
-    "ready": "concurrently \"npm run server\" \"npm run dev\""
+    "server:data": "json-server --watch data.json --port 5501",
+    "server:users": "json-server --watch users.json --port 5502",
+    "ready": "concurrently \"npm run server\" \"npm run server:data\" \"npm run server:users\" \"npm run dev\""
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",

@@ -1,14 +1,22 @@
-
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
-import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import LawyersList from "../../data/FeedbackData";
+import { useEffect, useContext, useState, useRef } from "react";
 import SearchBar from "../shared/SearchBar";
+import ContextProvider from "../../context/ContextProvider";
+import { FaLocationDot, FaUserTie } from "react-icons/fa6";
 
 
 const Lawyers = () => {
+    const { lawyersList, setLawyersList } = useContext(ContextProvider)
+    const [selectedLocation, setSelectedLocation] = useState('');
+    const [selectedSpeciality, setSelectedSpeciality] = useState('');
+
+
+    function filterLawyersByLegalIssueAndLocation(legalIssue, location) {
+        return lawyersList.filter(lawyer =>
+            lawyer.categories.includes(legalIssue) || lawyer.address.includes(location)
+        );
+    }
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -16,8 +24,6 @@ const Lawyers = () => {
         setIsOpen(!isOpen)
     }
 
-    const [selectedLocation, setSelectedLocation] = useState('');
-    const [selectedSpeciality, setSelectedSpeciality] = useState('');
 
     const locationDropdownRef = useRef(null);
     const specialityDropdownRef = useRef(null);
@@ -31,8 +37,8 @@ const Lawyers = () => {
     };
 
     const handleSearch = () => {
-        console.log('Searching with Location:', selectedLocation);
-        console.log('Searching with Speciality:', selectedSpeciality);
+        const filteredLawyers = filterLawyersByLegalIssueAndLocation(selectedSpeciality, selectedLocation);
+        setLawyersList(filteredLawyers)
     };
 
 
@@ -142,19 +148,24 @@ const Lawyers = () => {
 
 
                     {/* Lawyers */}
-                    < div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2" >
+                    <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2" >
                         {/* Lawyer */}
-                        {LawyersList.map((lawyer) => (
+                        {lawyersList.map((lawyer) => (
                             <div class="items-center bg-gray-50 rounded-lg shadow sm:flex" key={lawyer.id}>
                                 <Link to={`/lawyers/${lawyer.id}`}>
-                                    <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src={lawyer.image}/>
+                                    <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src={lawyer.image} />
                                 </Link>
                                 <div class="p-5">
-                                    <h3 class="text-xl font-bold tracking-tight text-gray-900">
-                                        <Link to={`/lawyers/${lawyer.id}`}>{lawyer.name}</Link>
-                                    </h3>
-                                    <span class="text-gray-500 capitalize">{lawyer.speciality}</span>
-                                    <p class="mt-3 mb-4 font-light text-gray-500">{lawyer.text}</p>
+                                    <div className='flex flex-row gap-2 items-center'>
+                                        <FaUserTie />
+                                        <h3 class="text-xl font-bold tracking-tight text-gray-900">
+                                            <Link to={`/lawyers/${lawyer.id}`}>{lawyer.full_name}</Link>
+                                        </h3>
+                                    </div>
+                                    <div className='flex flex-row gap-2 items-center'>
+                                        <FaLocationDot /><h3 class="text-black font-black capitalize">{lawyer.address}</h3>
+                                    </div>
+                                    <p class="mt-3 mb-4 font-light text-gray-500">{lawyer.categories}</p>
                                     <Link to={`/lawyers/${lawyer.id}`}>
                                         <button className="px-8 py-2 bg-[#800020] text-white hover:bg-red-800">Visit profile</button>
                                     </Link>

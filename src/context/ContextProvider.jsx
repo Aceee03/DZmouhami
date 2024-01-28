@@ -6,9 +6,10 @@ const FeedbackContext = createContext()
 export const ContextProvider = ({ children }) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    
+    const [lawyersList, setLawyersList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [feedback, setFeedback] = useState([])
+    const [users, setUsers] = useState([])
     const [feedbackEdit, setFeedbackEdit] = useState({
         item: {},
         edit: false
@@ -16,7 +17,25 @@ export const ContextProvider = ({ children }) => {
 
     useEffect(() => {
         fetchFeedback()
+        fetchLawyers()
     }, [])
+
+    // Fetch lawyers
+    const fetchLawyers = async () => {
+        const response = await fetch("http://localhost:5501/lawyers")
+        const lawyersData = await response.json()
+        const lawyersWithIds = lawyersData.map((lawyer, index) => ({
+            ...lawyer,
+            id: index + 1
+        }));
+        setLawyersList(lawyersWithIds)
+    }
+    // Fetch users
+    const fetchUsers = async () => {
+        const response = await fetch("http://localhost:5502/users")
+        const usersData = await response.json()
+        setUsers(usersData)
+    }
 
     // Fetch feedback
     const fetchFeedback = async () => {
@@ -31,6 +50,21 @@ export const ContextProvider = ({ children }) => {
         if (window.confirm('Are you sure you want to delete this feedback?')) {
             setFeedback(feedback.filter((item) => item.id !== id))
         }
+    }
+
+    // Add a user
+    const addUser = async (newUser) => {
+        const response = await fetch('http://localhost:5502/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+
+        const data = await response.json()
+
+        setUsers([newUser, ...users])
     }
 
     // Add a feedback item
@@ -74,7 +108,14 @@ export const ContextProvider = ({ children }) => {
             deleteFeedback,
             addFeedback,
             editFeedback,
-            updateFeedback
+            updateFeedback,
+            addUser,
+            lawyersList,
+            setLawyersList,
+            users,
+            setUsers,
+            isLoggedIn,
+            setIsLoggedIn
         }}>
             {children}
         </FeedbackContext.Provider>

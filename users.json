@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "fullName": "Wadie Boumediene",
+      "email": "w_boumediene@estin.dz",
+      "password": "password123"
+    },
+    {
+      "fullName": "Yacine Boudebouz",
+      "email": "y_boudebouz@estin.dz",
+      "password": "password456"
+    },
+    {
+      "fullName": "Bouzira Mouhamed",
+      "email": "m_bouzira@estin.dz",
+      "password": "password789"
+    },
+    {
+      "id": 8947,
+      "fullName": "Waaaaaaaaaa",
+      "email": "rezzaklamda@gma",
+      "password": "asdasdasd"
+    },
+    {
+      "id": 2070,
+      "fullName": "Waaaaaaaaaa",
+      "email": "w_boumediene@estin.dz",
+      "password": "aaaaaaaaa"
+    },
+    {
+      "id": 5091,
+      "fullName": "Wadie Boumed",
+      "email": "email@email.dz",
+      "password": "fishtyboy03"
+    }
+  ]
+}

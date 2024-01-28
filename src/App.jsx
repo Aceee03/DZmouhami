@@ -6,6 +6,8 @@ import Footer from './components/shared/Footer'
 import SignIn from './components/pages/SignIn'
 import ResetPassword from './components/pages/ResetPassword'
 import Lawyers from './components/pages/Lawyers'
+import LawyerProfile from './components/pages/LawyerProfile'
+import BookMeeting from './components/pages/BookMeeting'
 import { ContextProvider } from './context/ContextProvider'
 
 function App() {
@@ -20,8 +22,14 @@ function App() {
               <Route path="/" element={<>
                 <HomePage />
               </>} />
+              <Route path="/lawyers/:id/book" element={<>
+                <BookMeeting />
+              </>} />
               <Route path="/lawyers" element={<>
                 <Lawyers />
+              </>} />
+              <Route path="/lawyers/:id" element={<>
+                <LawyerProfile />
               </>} />
               <Route path="/signin" element={<>
                 <SignIn />

@@ -1,48 +1,113 @@
-const LawyerPage = () => {
+import React from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import ContextProvider from '../../context/ContextProvider';
+import { MdFolderSpecial } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
+import { useState, useEffect } from "react";
+import Button from "../shared/Button";
+import RatingSelect from "../RatingSelect";
+import { FaCircleCheck } from "react-icons/fa6";
+
+
+const LawyerPage = ({ match }) => {
+    const { addFeedback, feedbackEdit, updateFeedback, deleteFeedback } = useContext(ContextProvider)
+
+    const [text, setText] = useState('')
+    const [btnDisabled, setBtnDisbaled] = useState(true)
+    const [message, setMessage] = useState('')
+    const [rating, setRating] = useState(5)
+    const [name, setName] = useState('')
+    const [formSubmitted, setFormSubmitted] = useState(false)
+    const [comments, setComments] = useState([]);
+
+    const handleTextChange = (e) => {
+        if (text === '') {
+            setBtnDisbaled(true)
+            setMessage(null)
+        }
+        else if (text !== '' && text.trim().length < 10) {
+            setMessage('Feedback text must be at least 10 characters long')
+            setBtnDisbaled(true)
+        } else {
+            setBtnDisbaled(false)
+            setMessage(null)
+        }
+        setText(e.target.value)
+    }
+
+    const handleNameChange = (e) => {
+        if (name === '') {
+            setBtnDisbaled(true)
+            setMessage(null)
+        }
+        else if (name !== '' && name.trim().length < 5) {
+            setMessage('Please provide a name')
+            setBtnDisbaled(true)
+        } else {
+            setBtnDisbaled(false)
+            setMessage(null)
+        }
+        setName(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const newComment = {
+            name: name,
+            text: text,
+        }
+        setComments([...comments, newComment]);
+    }
+    const { lawyersList } = useContext(ContextProvider)
+    const { id } = useParams();
+
+    // Find the lawyer object with the specified ID
+    const lawyer = lawyersList.find(lawyer => lawyer.id === parseInt(id));
+
+    // If the lawyer with the specified ID is not found, display a message
+    if (!lawyer) {
+        return <div>Lawyer not found</div>;
+    }
+
+
     return (<div class="bg-gray-100">
         <div class="container mx-auto py-8">
             <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
                 <div class="col-span-4 sm:col-span-3">
                     <div class="bg-white shadow rounded-lg p-6">
                         <div class="flex flex-col items-center">
-                            <img src="https://randomuser.me/api/portraits/men/94.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                            <img src="https://www.ocaladivorceandfamilylawyer.com/static/2023/04/AttorneyPlaceholderAvatar.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
 
                             </img>
-                            <h1 class="text-xl font-bold">John Doe</h1>
-                            <p class="text-gray-700">Software Developer</p>
+                            <h1 class="text-xl font-bold">{lawyer.full_name}</h1>
+                            <p class="text-gray-700">{lawyer.email}</p>
                             <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
-                                <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
+                                <Link to={`/lawyers/${lawyer.id}/book`} className='bg-red-800 hover:bg-red-700 p-6 rounded-lg text-white font-normal'>Book a meeting</Link>
                             </div>
                         </div>
                         <hr class="my-6 border-t border-gray-300"></hr>
                         <div class="flex flex-col">
                             <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">Skills</span>
-                            <ul>
-                                <li class="mb-2">JavaScript</li>
-                                <li class="mb-2">React</li>
-                                <li class="mb-2">Node.js</li>
-                                <li class="mb-2">HTML/CSS</li>
-                                <li class="mb-2">Tailwind Css</li>
-                            </ul>
+                            <p>{lawyer.categories}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-span-4 sm:col-span-9">
                     <div class="bg-white shadow rounded-lg p-6">
                         <h2 class="text-xl font-bold mb-4">About Me</h2>
-                        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est
-                            vitae tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                            suscipit. Nunc finibus vel ante id euismod. Vestibulum ante ipsum primis in faucibus orci luctus
-                            et ultrices posuere cubilia Curae; Aliquam erat volutpat. Nulla vulputate pharetra tellus, in
-                            luctus risus rhoncus id.
+                        <MdFolderSpecial size={30} />
+                        <p class="text-gray-700 my-3">{lawyer.categories}
                         </p>
-
+                        <FaLocationDot size={30} />
+                        <p class="text-gray-700 my-3">{lawyer.address}
+                        </p>
                         <h3 class="font-semibold text-center mt-3 -mb-2">
                             Find me on
                         </h3>
                         <div class="flex justify-center items-center gap-6 my-6">
-                            <a class="text-gray-700 hover:text-orange-600" aria-label="Visit TrendyMinds LinkedIn" href=""
+                            <a class="text-gray-700 hover:text-red-800" aria-label="Visit TrendyMinds LinkedIn" href=""
                                 target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6">
                                     <path fill="currentColor"
@@ -50,7 +115,7 @@ const LawyerPage = () => {
                                     </path>
                                 </svg>
                             </a>
-                            <a class="text-gray-700 hover:text-orange-600" aria-label="Visit TrendyMinds YouTube" href=""
+                            <a class="text-gray-700 hover:text-red-800" aria-label="Visit TrendyMinds YouTube" href=""
                                 target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="h-6">
                                     <path fill="currentColor"
@@ -58,7 +123,7 @@ const LawyerPage = () => {
                                     </path>
                                 </svg>
                             </a>
-                            <a class="text-gray-700 hover:text-orange-600" aria-label="Visit TrendyMinds Facebook" href=""
+                            <a class="text-gray-700 hover:text-red-800" aria-label="Visit TrendyMinds Facebook" href=""
                                 target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="h-6">
                                     <path fill="currentColor"
@@ -66,7 +131,7 @@ const LawyerPage = () => {
                                     </path>
                                 </svg>
                             </a>
-                            <a class="text-gray-700 hover:text-orange-600" aria-label="Visit TrendyMinds Instagram" href=""
+                            <a class="text-gray-700 hover:text-red-800" aria-label="Visit TrendyMinds Instagram" href=""
                                 target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6">
                                     <path fill="currentColor"
@@ -74,7 +139,7 @@ const LawyerPage = () => {
                                     </path>
                                 </svg>
                             </a>
-                            <a class="text-gray-700 hover:text-orange-600" aria-label="Visit TrendyMinds Twitter" href=""
+                            <a class="text-gray-700 hover:text-red-800" aria-label="Visit TrendyMinds Twitter" href=""
                                 target="_blank">
                                 <svg class="h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path fill="currentColor"
@@ -84,55 +149,42 @@ const LawyerPage = () => {
                             </a>
                         </div>
 
+                        <h2 class="text-xl font-bold mt-6 mb-4">Comments</h2>
+                        <div className="flex justify-between flex-wrap gap-2 w-full">
+                            <span className="text-gray-700 font-bold">yacine boudebouz</span>
+                        </div>
+                        <p className="mt-2 font-black">tres bonne experience</p>
+                        <div>
+                            {comments.map((comment, index) => (
+                                <div key={index} className="mb-6">
+                                    <h1 className='text-gray-700 font-bold'>{'w_boumediene@estin.dz'}</h1>
+                                    <div className="flex justify-between flex-wrap gap-2 w-full">
+                                        <span className="text-gray-700 font-bold">{comment.name}</span>
+                                    </div>
+                                    <p className="mt-2 font-black">{comment.text}</p>
+                                </div>
+                            ))}
+                        </div>
+                        {!formSubmitted && <form onSubmit={handleSubmit} className="flex flex-col justify-start gap-4 place-items-center p-4">
+                            <input onChange={handleTextChange} value={text} type="text" placeholder="Write a comment"
+                                className="border-red-800 border-2 focus:outline-none px-96 py-4 
+                    rounded-md
+                    " />
+                            {message && <div className="text-sm text-red-800">{message}</div>}
+                            <Button type="submit" isDisabled={btnDisabled}>Comment</Button>
+                        </form>}
 
-                        <h2 class="text-xl font-bold mt-6 mb-4">Experience</h2>
-                        <div class="mb-6">
-                            <div class="flex justify-between flex-wrap gap-2 w-full">
-                                <span class="text-gray-700 font-bold">Web Developer</span>
-                                <p>
-                                    <span class="text-gray-700 mr-2">at ABC Company</span>
-                                    <span class="text-gray-700">2017 - 2019</span>
-                                </p>
+                        {
+                            formSubmitted && <div className="flex flex-col justify-center gap-4 place-items-center p-4">
+                                <h2 className="text-3xl mt-8">Thank you for your feedback!</h2>
+                                <FaCircleCheck size={40} />
                             </div>
-                            <p class="mt-2">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                suscipit.
-                            </p>
-                        </div>
-                        <div class="mb-6">
-                            <div class="flex justify-between flex-wrap gap-2 w-full">
-                                <span class="text-gray-700 font-bold">Web Developer</span>
-                                <p>
-                                    <span class="text-gray-700 mr-2">at ABC Company</span>
-                                    <span class="text-gray-700">2017 - 2019</span>
-                                </p>
-                            </div>
-                            <p class="mt-2">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                suscipit.
-                            </p>
-                        </div>
-                        <div class="mb-6">
-                            <div class="flex justify-between flex-wrap gap-2 w-full">
-                                <span class="text-gray-700 font-bold">Web Developer</span>
-                                <p>
-                                    <span class="text-gray-700 mr-2">at ABC Company</span>
-                                    <span class="text-gray-700">2017 - 2019</span>
-                                </p>
-                            </div>
-                            <p class="mt-2">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                suscipit.
-                            </p>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
         </div>
-    </div>);
+    </div >);
 }
 
 export default LawyerPage;

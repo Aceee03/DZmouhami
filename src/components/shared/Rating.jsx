@@ -49,7 +49,7 @@ const Rating = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (text.trim().length > 10 && name.trim().length > 5 && rating === 5) {
+        if (text.trim().length > 10 && name.trim().length > 5) { 
             const newFeedback = {
                 id: Math.floor(Math.random() * 10000) + 1,
                 name: name,
@@ -57,16 +57,6 @@ const Rating = () => {
                 rating: rating
             }
             addFeedback(newFeedback)
-            setText('')
-            setFormSubmitted(true)
-        }
-        else if (text.trim().length > 10 && name.trim().length > 5 && rating !== 5) {
-            const newFeedback = {
-                id: Math.floor(Math.random() * 10000) + 1,
-                name: name,
-                text: text,
-                rating: rating
-            }
             setText('')
             setFormSubmitted(true)
         }
