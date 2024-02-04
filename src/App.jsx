@@ -8,7 +8,9 @@ import ResetPassword from './components/pages/ResetPassword'
 import Lawyers from './components/pages/Lawyers'
 import LawyerProfile from './components/pages/LawyerProfile'
 import BookMeeting from './components/pages/BookMeeting'
+import AdminLogin from './components/pages/AdminLogin'
 import { ContextProvider } from './context/ContextProvider'
+import AdminPanel from './components/pages/AdminPanel'
 
 function App() {
 
@@ -33,6 +35,12 @@ function App() {
               </>} />
               <Route path="/signin" element={<>
                 <SignIn />
+              </>} />
+              <Route path="/signin/login-admin" element={<>
+                <AdminLogin />
+              </>} />
+              <Route path="/admin-panel" element={<>
+                <AdminPanel />
               </>} />
               <Route path="/resetpassword" element={
                 <ResetPassword />

@@ -150,10 +150,6 @@ const LawyerPage = ({ match }) => {
                         </div>
 
                         <h2 class="text-xl font-bold mt-6 mb-4">Comments</h2>
-                        <div className="flex justify-between flex-wrap gap-2 w-full">
-                            <span className="text-gray-700 font-bold">yacine boudebouz</span>
-                        </div>
-                        <p className="mt-2 font-black">tres bonne experience</p>
                         <div>
                             {comments.map((comment, index) => (
                                 <div key={index} className="mb-6">

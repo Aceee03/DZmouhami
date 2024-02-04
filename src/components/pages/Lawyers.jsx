@@ -12,10 +12,11 @@ const Lawyers = () => {
     const [selectedSpeciality, setSelectedSpeciality] = useState('');
 
 
-    function filterLawyersByLegalIssueAndLocation(legalIssue, location) {
+    const filterLawyersByLegalIssueAndLocation = (legalIssue, location) => {
         return lawyersList.filter(lawyer =>
             lawyer.categories.includes(legalIssue) || lawyer.address.includes(location)
         );
+
     }
 
     const [isOpen, setIsOpen] = useState(false)

@@ -18,27 +18,21 @@ const SignIn = () => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        // Log the entered email and password
-        console.log('Email:', email);
-        console.log('Password:', password);
-
         // Find the user with the entered email
         const user = users.find((user) => user.email === email);
 
-        // Log the found user
-        console.log('User:', user);
-
         if (user && user.password === password) {
-            // Log the user in
             console.log('Login successful');
+            setIsLoggedIn(true);
             navigate('/lawyers');
         } else {
             setError('Invalid email or password');
         }
-        navigate('/lawyers');
-        setIsLoggedIn(true);
     };
 
+    const navigateAdmin = () => {
+        navigate('login-admin')
+    }
 
     const handleChange = () => {
         if (action === 'Sign In') {
@@ -171,6 +165,9 @@ const SignIn = () => {
                             <p class="mt-10 text-center text-sm text-gray-500">
                                 Not a member?
                                 <a href="#" onClick={handleChange} class="font-semibold leading-6 text-[#800020] hover:text-red-800"> Register</a>
+                            </p>
+                            <p class="mt-10 text-center text-sm text-gray-500">
+                                <a href="#" onClick={navigateAdmin} class="font-semibold leading-6 text-[#800020] hover:text-red-800"> Login as lawyer</a>
                             </p>
                         </div>
                     </div>

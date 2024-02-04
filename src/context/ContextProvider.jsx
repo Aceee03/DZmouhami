@@ -18,6 +18,7 @@ export const ContextProvider = ({ children }) => {
     useEffect(() => {
         fetchFeedback()
         fetchLawyers()
+        fetchUsers()
     }, [])
 
     // Fetch lawyers
